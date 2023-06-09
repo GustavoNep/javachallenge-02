@@ -1,6 +1,8 @@
 package com.devsuperior.dschallenge.entities;
 
 import java.time.Instant;
+import java.util.Objects;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -54,4 +56,18 @@ public class Block {
         this.end_time = end;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Block block = (Block) o;
+
+        return Objects.equals(id, block.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return id != null ? id.hashCode() : 0;
+    }
 }
